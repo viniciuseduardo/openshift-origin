@@ -18,52 +18,58 @@
 			"value": "unmanaged"
 		},
 		"openshiftClusterPrefix": {
-			"value": "changeme"
+			"value": "sysmi"
 		},
 		"masterInstanceCount": {
-			"value": 3
+			"value": 1
 		},
 		"infraInstanceCount": {
-			"value": 3
+			"value": 1
 		},
 		"nodeInstanceCount": {
-			"value": 1
+			"value": 2
 		},
 		"dataDiskSize": {
 			"value": 128
 		},
 		"adminUsername": {
-			"value": "changeme"
+			"value": "sysmi-devops"
 		},
 		"openshiftPassword": {
-			"value": "changeme"
+			"value": "q1wse3rft5"
 		},
 		"enableMetrics": {
-			"value": "false"
+			"value": "true"
 		},
 		"enableLogging": {
-			"value": "false"
+			"value": "true"
 		},
 		"sshPublicKey": {
-			"value": "changeme"
+			"value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCz741td6z+WLCVdxd1jjZilyIhIP75Q+n6kyq+fiB6zPEYN8BLNkZq+jD6pM33WdqNTgFm/PMibRPlJM9ZmlNzyQW7GI+ToBPBc7lcGRySe7as/gO/lay25Eru2gmL+/k6klQ1IL/P6MW07rnJ6xS9xsR4NMUGV6rNnx+wItR9gbE7EYiZpaI3+6qALSgcSRveWGZcLxEjcl1cefykFQurqZqBli+PplES6qFHbJ5o1YEiH6dkAIKKq5zeCVmxVwRkgMBHAsg0S5NsgzVONXj+PoHiYI16O8oWOoqhNd5+PT6/Vxe3jruM1dzEODu8Eud7B0tTzjNdNfi98QuXdVtJ vinicius@SM-N-LENOVO-002"
 		},
 		"keyVaultResourceGroup": {
-			"value": "changeme"
+			"value": "sysmi-openshit-infra-rg"
 		},
 		"keyVaultName": {
-			"value": "changeme"
+			"value": "sysmi-openshit-infra-kv"
 		},
 		"keyVaultSecret": {
-			"value": "changeme"
+			"value": "sysmi-openshit-infra-secret"
 		},
 		"enableAzure": {
-			"value": "false"
+			"value": "true"
+		},
+		"aadClientId": {
+			"value": "62c9000c-a824-42bf-8a42-f59ee6f2ea94"
+		},
+		"aadClientSecret": {
+			"value": "W2iRxwo4HDQplMTBIt9BFZEtBBmo/xxceEUkYo6QuMk="
 		},
 		"defaultSubDomainType": {
 			"value": "nipio"
 		},
 		"defaultSubDomain": {
-			"value": "changeme"
+			"value": "devops.sysmi.com.br"
 		}
 	}
 }
