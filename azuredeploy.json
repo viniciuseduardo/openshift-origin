@@ -101,7 +101,7 @@
 		},
 		"masterInstanceCount": {
 			"type": "int",
-			"defaultValue": 3,
+			"defaultValue": 1,
 			"allowedValues": [1, 3, 5],
 			"metadata": {
 				"description": "Number of OpenShift masters."
@@ -109,7 +109,7 @@
 		},
 		"infraInstanceCount": {
 			"type": "int",
-			"defaultValue": 3,
+			"defaultValue": 1,
 			"allowedValues": [1, 2, 3],
 			"metadata": {
 				"description": "Number of OpenShift infra nodes."
@@ -125,7 +125,7 @@
 		},
 		"dataDiskSize": {
 			"type": "int",
-			"defaultValue": 64,
+			"defaultValue": 128,
 			"allowedValues": [32, 64, 128, 256, 512, 1024, 2048],
 			"metadata": {
 				"description": "Size of Datadisk in GB for Docker volume"
