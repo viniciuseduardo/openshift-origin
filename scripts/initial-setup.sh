@@ -32,12 +32,12 @@ else
 fi
 
 echo "Checking SSH Key $SSH_KEY_NAME"
-if [ -f "../keys/$SSH_KEY_NAME" ]
+if [ -f "keys/$SSH_KEY_NAME" ]
 then
     echo "Already SSH Key: $SSH_KEY_NAME"
 else
     echo "Creating SSH Key $SSH_KEY_NAME"
-    ssh-keygen -t rsa -f "../keys/$SSH_KEY_NAME" -N ""
+    ssh-keygen -t rsa -f "keys/$SSH_KEY_NAME" -N ""
     echo "Created SSH Key $SSH_KEY_NAME"
 fi
 
@@ -46,7 +46,7 @@ CHECK_SECRET_EXISTS="$(az keyvault secret show --name $SECRET_NAME --vault-name 
 if [ -z "$CHECK_SECRET_EXISTS" ] 
 then
     echo "Creating Secret in Key Vault: $KEYVAULT_NAME"
-    az keyvault secret set --vault-name "$KEYVAULT_NAME" -n "$SECRET_NAME" --file ../keys/$SSH_KEY_NAME
+    az keyvault secret set --vault-name "$KEYVAULT_NAME" -n "$SECRET_NAME" --file   keys/$SSH_KEY_NAME
     echo "Created Secret in Key Vault: $KEYVAULT_NAME"
 else
     echo "Already created Secret: $SECRET_NAME in $KEYVAULT_NAME"

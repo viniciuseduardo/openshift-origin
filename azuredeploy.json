@@ -8,7 +8,7 @@
 				"description": "The base URL where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated.",
 				"artifactsBaseUrl": ""
 			},
-			"defaultValue": "https://raw.githubusercontent.com/Microsoft/openshift-origin/azurestack-release-3.9"
+			"defaultValue": "https://raw.githubusercontent.com/viniciuseduardo/openshift-origin/azurestack-release-3.9"
 		},
 		"masterVmSize": {
 			"type": "string",
@@ -172,7 +172,7 @@
 		},
 		"enableCNS": {
 			"type": "string",
-			"defaultValue": "true",
+			"defaultValue": "false",
 			"allowedValues": [
 				"true", "false"
 			],
