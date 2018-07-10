@@ -51,7 +51,7 @@ sed -i -e "s/^#pty=False/pty=False/" /etc/ansible/ansible.cfg
 
 # Cloning Ansible playbook repository
 echo $(date) "- Cloning Openshift Ansible Playbook"
-(cd /home/$SUDOUSER && rm -Rf && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git)
+(cd /home/$SUDOUSER && rm -Rf openshift-container-platform-playbooks && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git)
 if [ -d /home/${SUDOUSER}/openshift-container-platform-playbooks ]
 then
   chmod -R 777 /home/$SUDOUSER/openshift-container-platform-playbooks
