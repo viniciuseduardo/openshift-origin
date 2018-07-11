@@ -342,7 +342,7 @@
 		"infraLbHttpProbeId": "[concat(variables('infraLbId'),'/probes/httpProbe')]",
 		"infraLbHttpsProbeId": "[concat(variables('infraLbId'),'/probes/httpsProbe')]",
 		"imageReference": {
-			"publisher": "Openlogic",
+			"publisher": "RedHat",
 			"offer": "RHEL",
 			"sku": "7.4",
 			"version": "latest"

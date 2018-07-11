@@ -52,14 +52,14 @@ sed -i -e "s/^#stdout_callback = skippy/stdout_callback = skippy/" /etc/ansible/
 sed -i -e "s/^#log_path = \/var\/log\/ansible.log/log_path = \/var\/log\/ansible.log/" /etc/ansible/ansible.cfg
 
 # Cloning Ansible playbook repository
-(cd /home/$SUDOUSER && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git)
 if [ -d /home/${SUDOUSER}/openshift-container-platform-playbooks ]
 then
   chmod -R 777 /home/$SUDOUSER/openshift-container-platform-playbooks
   echo " - Retrieved playbooks successfully"
 else
-  echo " - Retrieval of playbooks failed"
-  exit 99
+#   echo " - Retrieval of playbooks failed"
+#   exit 99
+	(cd /home/$SUDOUSER && git clone https://github.com/Microsoft/openshift-container-platform-playbooks.git)
 fi
 
 # Create playbook to update ansible.cfg file
@@ -224,8 +224,11 @@ EOF
 
 echo $(date) " - Cloning openshift-ansible repo for use in installation"
 
-runuser -l $SUDOUSER -c "git clone -b release-3.9 https://github.com/openshift/openshift-ansible /home/$SUDOUSER/openshift-ansible"
-chmod -R 777 /home/$SUDOUSER/openshift-ansible
+if [ -d /home/${SUDOUSER}/openshift-ansible ]
+then
+	runuser -l $SUDOUSER -c "git clone -b release-3.9 https://github.com/openshift/openshift-ansible /home/$SUDOUSER/openshift-ansible"
+	chmod -R 777 /home/$SUDOUSER/openshift-ansible
+fi
 
 # Run a loop playbook to ensure DNS Hostname resolution is working prior to continuing with script
 echo $(date) " - Running DNS Hostname resolution check"

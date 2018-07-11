@@ -45,16 +45,16 @@
 			"value": "true"
 		},
 		"sshPublicKey": {
-			"value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCz741td6z+WLCVdxd1jjZilyIhIP75Q+n6kyq+fiB6zPEYN8BLNkZq+jD6pM33WdqNTgFm/PMibRPlJM9ZmlNzyQW7GI+ToBPBc7lcGRySe7as/gO/lay25Eru2gmL+/k6klQ1IL/P6MW07rnJ6xS9xsR4NMUGV6rNnx+wItR9gbE7EYiZpaI3+6qALSgcSRveWGZcLxEjcl1cefykFQurqZqBli+PplES6qFHbJ5o1YEiH6dkAIKKq5zeCVmxVwRkgMBHAsg0S5NsgzVONXj+PoHiYI16O8oWOoqhNd5+PT6/Vxe3jruM1dzEODu8Eud7B0tTzjNdNfi98QuXdVtJ vinicius@SM-N-LENOVO-002"
+			"value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAG++uYhZrU+NCaoalADkGDCo3tirYc5NIMnIoGTtwz02G8S40tXQtawgPYQRpj3Vm4+P15APGzBg0S/brM+Bq0/xAse5b1wd4E9txXjgF9HF26MjFwY7Uplak5ZVqjUybBNak48bKvgIQLOjf+0mdR+baPvCD/e2PZWTgd+g8r2eiO+DWsmSA2M2Qp3n9Nz2lscthjf7C6dHGIQvQL8F/jilxMu/vAyD186PBO3FQM99nUoru4OpVo24T08mKyU6aLnJAOrAyIMG8yObpqrpSXOKnu6IPhzyX4INkFL/MWlMZoyMYQcuDPp4ayLkxhvcRs1WVbfh1/laVVi+qF+zz vinicius@SM-N-LENOVO-002"
 		},
 		"keyVaultResourceGroup": {
-			"value": "sysmi-openshit-infra-rg"
+			"value": "sysmi-markel-osc-rg"
 		},
 		"keyVaultName": {
-			"value": "sysmi-openshit-infra-kv"
+			"value": "sysmi-markel-osc-kv"
 		},
 		"keyVaultSecret": {
-			"value": "sysmi-openshit-infra-secret"
+			"value": "sysmi-markel-osc-secret"
 		},
 		"enableAzure": {
 			"value": "true"
@@ -69,7 +69,7 @@
 			"value": "nipio"
 		},
 		"defaultSubDomain": {
-			"value": "os.sysmi.com.br"
+			"value": "markel.osc.sysmi.com.br"
 		}
 	}
 }
