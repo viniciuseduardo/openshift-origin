@@ -1,0 +1,75 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"_artifactsLocation": {
+			"value": "https://raw.githubusercontent.com/viniciuseduardo/openshift-origin/release-3.9"
+		},
+		"masterVmSize": {
+			"value": "Standard_D4s_v3"
+		},
+		"infraVmSize": {
+			"value": "Standard_D4s_v3"
+		},
+		"nodeVmSize": {
+			"value": "Standard_D2s_v3"
+		},
+		"storageKind": {
+			"value": "managed"
+		},
+		"openshiftClusterPrefix": {
+			"value": "sysmi-markel"
+		},
+		"masterInstanceCount": {
+			"value": 1
+		},
+		"infraInstanceCount": {
+			"value": 1
+		},
+		"nodeInstanceCount": {
+			"value": 2
+		},
+		"dataDiskSize": {
+			"value": 128
+		},
+		"adminUsername": {
+			"value": "sysmi-devops"
+		},
+		"openshiftPassword": {
+			"value": "q1wse3rft5"
+		},
+		"enableMetrics": {
+			"value": "true"
+		},
+		"enableLogging": {
+			"value": "true"
+		},
+		"sshPublicKey": {
+			"value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAG++uYhZrU+NCaoalADkGDCo3tirYc5NIMnIoGTtwz02G8S40tXQtawgPYQRpj3Vm4+P15APGzBg0S/brM+Bq0/xAse5b1wd4E9txXjgF9HF26MjFwY7Uplak5ZVqjUybBNak48bKvgIQLOjf+0mdR+baPvCD/e2PZWTgd+g8r2eiO+DWsmSA2M2Qp3n9Nz2lscthjf7C6dHGIQvQL8F/jilxMu/vAyD186PBO3FQM99nUoru4OpVo24T08mKyU6aLnJAOrAyIMG8yObpqrpSXOKnu6IPhzyX4INkFL/MWlMZoyMYQcuDPp4ayLkxhvcRs1WVbfh1/laVVi+qF+zz vinicius@SM-N-LENOVO-002"
+		},
+		"keyVaultResourceGroup": {
+			"value": "sysmi-markel-osc-rg"
+		},
+		"keyVaultName": {
+			"value": "sysmi-markel-osc-kv"
+		},
+		"keyVaultSecret": {
+			"value": "sysmi-markel-osc-secret"
+		},
+		"enableAzure": {
+			"value": "true"
+		},
+		"aadClientId": {
+			"value": "62c9000c-a824-42bf-8a42-f59ee6f2ea94"
+		},
+		"aadClientSecret": {
+			"value": "W2iRxwo4HDQplMTBIt9BFZEtBBmo/xxceEUkYo6QuMk="
+		},
+		"defaultSubDomainType": {
+			"value": "nipio"
+		},
+		"defaultSubDomain": {
+			"value": "markel.osc.sysmi.com.br"
+		}
+	}
+}
