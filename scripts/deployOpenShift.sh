@@ -224,7 +224,7 @@ EOF
 
 echo $(date) " - Cloning openshift-ansible repo for use in installation"
 
-if [ -d /home/${SUDOUSER}/openshift-ansible ]
+if [ ! -d /home/${SUDOUSER}/openshift-ansible ]
 then
 	runuser -l $SUDOUSER -c "git clone -b release-3.9 https://github.com/openshift/openshift-ansible /home/$SUDOUSER/openshift-ansible"
 	chmod -R 777 /home/$SUDOUSER/openshift-ansible
