@@ -38,6 +38,42 @@ export MASTERLOOP=$((MASTERCOUNT - 1))
 export INFRALOOP=$((INFRACOUNT - 1))
 export NODELOOP=$((NODECOUNT - 1))
 
+echo $(date) " - Generating Envorinment Variables Files"
+cat > /etc/profile.d/deploy-openshift.sh <<EOF
+export SUDOUSER=$SUDOUSER
+export PASSWORD="$SUDOUSER"
+export MASTER=$MASTER
+export MASTERPUBLICIPHOSTNAME=$MASTERPUBLICIPHOSTNAME
+export MASTERPUBLICIPADDRESS=$MASTERPUBLICIPADDRESS
+export INFRA=$INFRA
+export NODE=$NODE
+export NODECOUNT=$NODECOUNT
+export INFRACOUNT=${INFRACOUNT}
+export MASTERCOUNT=${MASTERCOUNT}
+export ROUTING=${ROUTING}
+export REGISTRYSA=${REGISTRYSA}
+export ACCOUNTKEY="${14ACCOUNTKEY}"
+export TENANTID=${TENANTID}
+export SUBSCRIPTIONID=${SUBSCRIPTIONID}
+export AADCLIENTID=${AADCLIENTID}
+export AADCLIENTSECRET="${AADCLIENTSECRET}"
+export RESOURCEGROUP=${RESOURCEGROUP}
+export LOCATION=${LOCATION}
+export METRICS=${METRICS}
+export LOGGING=${LOGGING}
+export COCKPIT=${COCKPIT}
+export AZURE=${AZURE}
+export STORAGEKIND=${STORAGEKIND}
+
+# Determine if Commercial Azure or Azure Government
+CLOUD=$( curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/location?api-version=2017-04-02&format=text" | cut -c 1-2 )
+export CLOUD=${CLOUD^^}
+
+export MASTERLOOP=$((MASTERCOUNT - 1))
+export INFRALOOP=$((INFRACOUNT - 1))
+export NODELOOP=$((NODECOUNT - 1))
+EOF
+
 # Generate private keys for use by Ansible
 echo $(date) " - Generating Private keys for use by Ansible for OpenShift Installation"
 
