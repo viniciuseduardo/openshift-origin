@@ -3,7 +3,7 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"_artifactsLocation": {
-			"value": "https://raw.githubusercontent.com/viniciuseduardo/openshift-origin/release-3.9"
+			"value": "https://raw.githubusercontent.com/viniciuseduardo/openshift-origin/release-3.7"
 		},
 		"masterVmSize": {
 			"value": "Standard_D4s_v3"
