@@ -54,7 +54,7 @@
 			"value": "sysmi-markel-osc-kv"
 		},
 		"keyVaultSecret": {
-			"value": "sysmi-markel-osc-secret"
+			"value": "sysmi-markel-osc-sct"
 		},
 		"enableAzure": {
 			"value": "true"

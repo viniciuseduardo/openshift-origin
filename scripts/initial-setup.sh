@@ -3,11 +3,12 @@
 PROJECT_NAME=$1
 REGION_NAME=$2
 SUBSCRIPTION_ID=$3
+SERVICE_PRINCIPAL_ID=$4
 
-RESOURCE_GROUP_NAME="sysmi-$PROJECT_NAME-rg"
-KEYVAULT_NAME="sysmi-$PROJECT_NAME-kv"
-SECRET_NAME="sysmi-$PROJECT_NAME-secret"
-SSH_KEY_NAME="sysmi-$PROJECT_NAME-key"
+RESOURCE_GROUP_NAME="$PROJECT_NAME-rg"
+KEYVAULT_NAME="$PROJECT_NAME-kv"
+SECRET_NAME="$PROJECT_NAME-sct"
+SSH_KEY_NAME="$PROJECT_NAME-key"
 
 echo "Checking Resource Group: $RESOURCE_GROUP_NAME in Region: $REGION_NAME"
 CHECK_RG_EXISTS="$(az group exists --name $RESOURCE_GROUP_NAME --subscription $SUBSCRIPTION_ID)"
@@ -16,7 +17,10 @@ then
     echo "Creating Resource Group: $RESOURCE_GROUP_NAME in Region: $REGION_NAME"
     az group create -n "$RESOURCE_GROUP_NAME" -l "$REGION_NAME" --subscription "$SUBSCRIPTION_ID"
     echo "Created Resource Group: $RESOURCE_GROUP_NAME in Region: $REGION_NAME"
+    echo "Assigment Role to $RESOURCE_GROUP_NAME"
+    az role assignment create --assignee "$SERVICE_PRINCIPAL_ID" --resource-group "$RESOURCE_GROUP_NAME" --role Contributor
 else
+    az role assignment create --assignee "$SERVICE_PRINCIPAL_ID" --resource-group "$RESOURCE_GROUP_NAME" --role Contributor
     echo "Already created Resource Group: $RESOURCE_GROUP_NAME in Region: $REGION_NAME"
 fi
 
@@ -51,3 +55,5 @@ then
 else
     echo "Already created Secret: $SECRET_NAME in $KEYVAULT_NAME"
 fi
+
+echo "Assigment Role to $RESOURCE_GROUP_NAME"
