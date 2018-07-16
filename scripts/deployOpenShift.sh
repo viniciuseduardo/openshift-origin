@@ -38,6 +38,8 @@ export MASTERLOOP=$((MASTERCOUNT - 1))
 export INFRALOOP=$((INFRACOUNT - 1))
 export NODELOOP=$((NODECOUNT - 1))
 
+export OO_VERSION="v"$(rpm -q origin | cut -d'-' -f 2 | head -c 3)
+
 echo $(date) " - Generating Envorinment Variables Files"
 
 cat > /etc/profile.d/deploy-openshift.sh <<EOF
@@ -82,6 +84,8 @@ export CLOUDNAME="AzureUSGovernmentCloud"
 else
 export CLOUDNAME="AzurePublicCloud"
 fi
+
+export OO_VERSION="v"$(rpm -q origin | cut -d'-' -f 2 | head -c 3)
 
 EOF
 
@@ -706,14 +710,17 @@ if [ $METRICS == "true" ]
 then
 	sleep 30	
 	echo $(date) "- Determining Origin version from rpm"
-	OO_VERSION=$(rpm -q origin | cut -d'-' -f 2)	
+	OO_VERSION="v"$(rpm -q origin | cut -d'-' -f 2 | head -c 3)
 	echo $(date) "- Deploying Metrics"
 	if [ $AZURE == "true" ]
 	then
-		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml -e openshift_metrics_install_metrics=True -e openshift_metrics_cassandra_storage_type=dynamic -e openshift_hosted_metrics_deployer_version=$OO_VERSION"
+		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml -e openshift_metrics_install_metrics=True -e openshift_metrics_cassandra_storage_type=dynamic -e openshift_hosted_metrics_deployer_version=$OO_VERSION"    
 	else
 		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml -e openshift_metrics_install_metrics=True -e openshift_hosted_metrics_deployer_version=$OO_VERSION"
 	fi
+
+  runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-prometheus.yml"
+
 	if [ $? -eq 0 ]
 	then
 	   echo $(date) " - Metrics configuration completed successfully"
@@ -731,9 +738,9 @@ then
 	echo $(date) "- Deploying Logging"
 	if [ $AZURE == "true" ]
 	then
-		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml -e openshift_logging_install_logging=True -e openshift_logging_es_pvc_dynamic=true"
+		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml -e openshift_logging_install_logging=True -e openshift_logging_es_pvc_dynamic=true -e openshift_client_binary='/bin/oc' -e openshift_logging_image_version=$OO_VERSION"
 	else
-		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml -e openshift_logging_install_logging=True"
+		runuser -l $SUDOUSER -c "ansible-playbook /home/$SUDOUSER/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml -e openshift_logging_install_logging=True -e openshift_logging_image_version=$OO_VERSION"
 	fi
 	if [ $? -eq 0 ]
 	then
